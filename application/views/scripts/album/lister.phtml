@@ -1,0 +1,31 @@
+<p><a href="<?=$this->url(array('controller'=>'album', 'action'=>'ajouter'));?>">Ajouter de nouveaux albums</a></p>
+<table>
+    <tr>
+        <th>Titre</th>
+        <th>Artiste</th>
+        <th>&nbsp;</th>
+    </tr>
+<?foreach($this->albums as $album) : ?>
+    <tr>
+        <td><?=$this->escape($album->titre);?></td>
+        <td><?=$this->escape($album->artiste);?></td>
+        <td>
+            <a href="<?=$this->url(array('controller' => 'album', 'action' => 'modifier', 'id' => $album->id));?>">Modifier</a>
+            <a href="javascript:void(0)" onclick="supprimerAlbum(<?=$album->id;?>)">Supprimer</a>
+        </td>
+    </tr>
+<?endforeach; ?>
+</table>
+<form method="post" id="deleteForm">
+	<input type="hidden" id="deleteId" name="deleteId">
+</form>
+<script type="text/javascript">
+	function supprimerAlbum(id)
+	{
+		if (confirm('Voulez vous vraiment supprimer cet artiste?'))
+		{
+			$('#deleteId').val(id);
+			$('#deleteForm').submit();
+		}
+	} 
+</script>

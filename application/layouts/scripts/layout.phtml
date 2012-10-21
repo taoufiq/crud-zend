@@ -1,0 +1,20 @@
+<?php
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+$this->headTitle()->setSeparator(' - ');
+$this->headTitle('Tutoriel Zend Framework');
+
+echo $this->doctype("XHTML1_STRICT"); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+    <?=$this->headMeta(); ?>
+    <?=$this->headTitle($this->title); ?>
+    <?=$this->headLink()->appendStylesheet('/css/style.css'); ?>
+    <?=$this->headScript()->appendFile('/js/jquery-1.8.2.min.js') ?>
+</head>
+<body>
+    <div id="content">
+        <h1><?=$this->escape($this->title); ?></h1>
+        <?=$this->layout()->content; ?>
+    </div>
+</body>
+</html>
